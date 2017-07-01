@@ -1,0 +1,46 @@
+{
+  "name": "zaggino.brackets-eslint",
+  "version": "3.0.6",
+  "engines": {
+    "brackets": ">=1.9.0"
+  },
+  "title": "ESLint",
+  "description": "Adds ESLint support to Brackets",
+  "keywords": [
+    "brackets-extension",
+    "eslint",
+    "lint",
+    "linting",
+    "linter"
+  ],
+  "homepage": "https://github.com/zaggino/brackets-eslint",
+  "bugs": "https://github.com/zaggino/brackets-eslint/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Martin Zagora",
+    "email": "zaggino@gmail.com",
+    "url": "https://github.com/zaggino"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zaggino/brackets-eslint.git"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "test": "npm run prepublish",
+    "prepublish": "npm prune && npm update && npm run build && npm run lint",
+    "build": "rimraf ./dist && tsc",
+    "lint": "tslint -c tslint.json --project tsconfig.json"
+  },
+  "dependencies": {
+    "brackets-inspection-gutters": "^0.2.10",
+    "eslint": "^3.16.1"
+  },
+  "devDependencies": {
+    "@types/jquery": "2.0.40",
+    "@types/node": "7.0.5",
+    "rimraf": "2.6.1",
+    "tslint": "4.0.2",
+    "typescript": "2.1.4"
+  }
+}

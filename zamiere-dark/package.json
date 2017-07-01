@@ -1,0 +1,20 @@
+{
+    "title": "Zamiere Dark",
+    "name": "zamiere-dark",
+    "description": "Zamiere dark theme for Brackets",
+    "version": "0.0.3",
+    "author": "Miguel Castillo <mahchagnu@gmail.com>",
+    "homepage": "https://github.com/Brackets-Themes/Zamiere",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Brackets-Themes/Zamiere.git"
+    },
+    "engines": {
+        "brackets": ">=0.42.0"
+    },
+    "theme": {
+        "file": "main.less",
+        "dark": true
+    },
+    "screenshot": "screenshot.png"
+}

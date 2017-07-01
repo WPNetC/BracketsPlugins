@@ -1,0 +1,30 @@
+{
+    "name": "brackets.swatcher",
+    "title": "Swatcher",
+    "description": "Generates CodeHints/Colorpalettes from importing via LESS/SASS Files, Images (Colorpicker) or Adobe Swatchfiles (*.aco, *.ase)",
+    "homepage": "https://github.com/FreaKzero/brackets-swatcher",
+    "version": "1.2.2",
+    "author": "FreaKzero <pete@freakzero.com>",
+    "license": "GPL",
+    "categories" : "color",
+    "keywords" : [
+        "less",
+        "sass",
+        "scss",
+        "photoshop",
+        "swatch"
+    ],
+    "engines": {
+        "brackets": ">=1.5.0"
+    },
+    "devDependencies": {
+        "grunt": "*",
+        "grunt-contrib-watch": "*",
+        "grunt-contrib-less": "*",
+        "grunt-contrib-cssmin": "*",
+        "grunt-contrib-compress": "*",
+        "grunt-contrib-copy": "*",
+        "grunt-run": "*"
+  }
+
+}

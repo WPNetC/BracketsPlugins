@@ -1,0 +1,80 @@
+/** 
+ * @test content 
+*/
+
+/* global vars */
+$white: #fff;
+$red: #f00;
+$sizeA: 30px;
+$sizeB: 10em;
+
+/* functions */
+@function sum($a, $b){
+   @return $a+$b;
+}
+
+@function multiple ($a, $b, $c: 5px){
+   $result: $a * $b * $c;
+   @return $result;
+}
+@function divide ($a, $b)
+{
+   $res: $a/$b;
+   @return $res;
+}
+
+@function inlineFunction () { @return null; }
+
+@function inlineWithParams ($a, $b) { @return null; }
+
+@function multiLineStrangeFn 
+   ()
+{
+   $localA: 5px;
+   $localB: 10px;
+   @return $localA + $localB;
+}
+
+/* mixins */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin large-text {
+  font: {
+    family: Arial;
+    size: 20px;
+    weight: bold;
+  }
+  color: #ff0000;
+}
+
+@mixin clearfix 
+{
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & { height: 1px }
+}
+
+/* exclude inside comment */
+/*
+ $black: #000;
+ @function excludedFunction(){
+ } 
+*/
+
+body{
+   background-color: $white;
+   @include clearfix;
+   margin: sum(20, 20);
+
+}

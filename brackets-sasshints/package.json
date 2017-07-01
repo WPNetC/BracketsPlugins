@@ -1,0 +1,10 @@
+{
+    "name": "brackets-sasshints",
+    "title": "SASS/SCSS Hints",
+    "author": "Konstantin Kobs",
+    "contributors": "Max M.",
+    "homepage": "https://github.com/maximmis/brackets-SASShints",
+    "version": "1.2.0",
+    "engines": { "brackets": ">=0.23" },
+    "description": "Autocompletion for SASS/SCSS variables and mixins. Color previews included. Forked and updated from: https://github.com/konstantinkobs/brackets-SASShints"
+}

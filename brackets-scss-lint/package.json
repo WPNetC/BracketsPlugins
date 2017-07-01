@@ -1,0 +1,14 @@
+{
+    "name": "brackets-scss-lint",
+    "title": "SCSS Lint",
+    "description": "Adds SCSS lint support to Brackets.",
+    "homepage": "https://github.com/chimo/brackets-scss-lint",
+    "version": "0.4.0",
+    "keywords": ["lint", "linting", "linter", "scss"],
+    "categories": "linting",
+    "author": "chimo <chimo@chromic.org>",
+    "license": "MIT",
+    "engines": {
+        "brackets": ">=0.44.0"
+    }
+}

@@ -1,0 +1,310 @@
+{
+   "rgb": {
+      "parameters": "$red, $green, $blue",
+      "description": "Creates a Color from red, green, and blue values."
+   },
+   "rgba": {
+      "parameters": "$color, $alpha",
+      "description": "Creates a Color from red, green, blue, and alpha values."
+   },
+   "red": {
+      "parameters": "$color",
+      "description": "Gets the red component of a color."
+   },
+   "green": {
+      "parameters": "$color",
+      "description": "Gets the green component of a color."
+   },
+   "blue": {
+      "parameters": "$color",
+      "description": "Gets the blue component of a color."
+   },
+   "mix": {
+      "parameters": "$color1, $color2, [$weight]",
+      "description": "Mixes two colors together."
+   },
+   "hsl": {
+      "parameters": "$hue, $saturation, $lightness",
+      "description": "Creates a Color from hue, saturation, and lightness values."
+   },
+   "hsla": {
+      "parameters": "$hue, $saturation, $lightness, $alpha",
+      "description": "Creates a Color from hue, saturation, lightness, and alpha values."
+   },
+   "hue": {
+      "parameters": "$color",
+      "description": "Gets the hue component of a color."
+   },
+   "saturation": {
+      "parameters": "$color",
+      "description": "Gets the saturation component of a color."
+   },
+   "lightness": {
+      "parameters": "$color",
+      "description": "Gets the lightness component of a color."
+   },
+   "adjust-hue": {
+      "parameters": "$color, $degrees",
+      "description": "Changes the hue of a color."
+   },
+   "lighten": {
+      "parameters": "$color, $amount",
+      "description": "Makes a color lighter."
+   },
+   "darken": {
+      "parameters": "$color, $amount",
+      "description": "Makes a color darker."
+   },
+   "saturate": {
+      "parameters": "$color, $amount",
+      "description": "Makes a color more saturated."
+   },
+   "desaturate": {
+      "parameters": "$color, $amount",
+      "description": "Makes a color less saturated."
+   },
+   "grayscale": {
+      "parameters": "$color",
+      "description": "Converts a color to grayscale."
+   },
+   "complement": {
+      "parameters": "$color",
+      "description": "Returns the complement of a color."
+   },
+   "invert": {
+      "parameters": "$color",
+      "description": "Returns the inverse of a color."
+   },
+   "opacity": {
+      "parameters": "$color",
+      "description": "Gets the alpha component (opacity) of a color."
+   },
+   "fade-in": {
+      "parameters": "$color, $amount",
+      "description": "Makes a color more opaque."
+   },
+   "fade-out": {
+      "parameters": "$color, $amount",
+      "description": "Makes a color more transparent."
+   },
+   "adjust-color": {
+      "parameters": "$color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha]",
+      "description": "Increases or decreases one or more components of a color."
+   },
+   "scale-color": {
+      "parameters": "$color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha]",
+      "description": "Fluidly scales one or more properties of a color."
+   },
+   "change-color": {
+      "parameters": "$color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha]",
+      "description": "Changes one or more properties of a color."
+   },
+   "ie-hex-str": {
+      "parameters": "$color",
+      "description": "Converts a color into the format understood by IE filters."
+   },
+   "unquote": {
+      "parameters": "$string",
+      "description": "Removes quotes from a string."
+   },
+   "quote": {
+      "parameters": "$string",
+      "description": "Adds quotes to a string."
+   },
+   "str-length": {
+      "parameters": "$string",
+      "description": "Returns the number of characters in a string."
+   },
+   "str-insert": {
+      "parameters": "$string, $insert, $index",
+      "description": "Inserts $insert into $string at $index."
+   },
+   "str-index": {
+      "parameters": "$string, $substring",
+      "description": "Returns the index of the first occurrence of $substring in $string."
+   },
+   "str-slice": {
+      "parameters": "$string, $start-at, [$end-at]",
+      "description": "Extracts a substring from $string."
+   },
+   "to-upper-case": {
+      "parameters": "$string",
+      "description": "Converts a string to upper case."
+   },
+   "to-lower-case": {
+      "parameters": "$string",
+      "description": "Converts a string to lower case."
+   },
+   "percentage": {
+      "parameters": "$number",
+      "description": "Converts a unitless number to a percentage."
+   },
+   "round": {
+      "parameters": "$number",
+      "description": "Rounds a number to the nearest whole number."
+   },
+   "ceil": {
+      "parameters": "$number",
+      "description": "Rounds a number up to the next whole number."
+   },
+   "floor": {
+      "parameters": "$number",
+      "description": "Rounds a number down to the previous whole number."
+   },
+   "abs": {
+      "parameters": "$number",
+      "description": "Returns the absolute value of a number."
+   },
+   "min": {
+      "parameters": "$numbers…",
+      "description": "Finds the minimum of several numbers."
+   },
+   "max": {
+      "parameters": "$numbers…",
+      "description": "Finds the maximum of several numbers."
+   },
+   "random": {
+      "parameters": "[$limit]",
+      "description": "Returns a random number."
+   },
+   "length": {
+      "parameters": "$list",
+      "description": "Returns the length of a list."
+   },
+   "nth": {
+      "parameters": "$list, $n",
+      "description": "Returns a specific item in a list."
+   },
+   "set-nth": {
+      "parameters": "$list, $n, $value",
+      "description": "Replaces the nth item in a list."
+   },
+   "join": {
+      "parameters": "$list1, $list2, [$separator]",
+      "description": "Joins together two lists into one."
+   },
+   "append": {
+      "parameters": "$list1, $val, [$separator]",
+      "description": "Appends a single value onto the end of a list."
+   },
+   "zip": {
+      "parameters": "$lists…",
+      "description": "Combines several lists into a single multidimensional list."
+   },
+   "index": {
+      "parameters": "$list, $value",
+      "description": "Returns the position of a value within a list."
+   },
+   "list-separator": {
+      "parameters": "$list",
+      "description": "Returns the separator of a list."
+   },
+   "map-get": {
+      "parameters": "$map, $key",
+      "description": "Returns the value in a map associated with a given key."
+   },
+   "map-merge": {
+      "parameters": "$map1, $map2",
+      "description": "Merges two maps together into a new map."
+   },
+   "map-remove": {
+      "parameters": "$map, $keys…",
+      "description": "Returns a new map with keys removed."
+   },
+   "map-keys": {
+      "parameters": "$map",
+      "description": "Returns a list of all keys in a map."
+   },
+   "map-values": {
+      "parameters": "$map",
+      "description": "Returns a list of all values in a map."
+   },
+   "map-has-key": {
+      "parameters": "$map, $key",
+      "description": "Returns whether a map has a value associated with a given key."
+   },
+   "keywords": {
+      "parameters": "$args",
+      "description": "Returns the keywords passed to a function that takes variable arguments."
+   },
+   "selector-nest": {
+      "parameters": "$selectors…",
+      "description": "Nests selector beneath one another like they would be nested in the stylesheet."
+   },
+   "selector-append": {
+      "parameters": "$selectors…",
+      "description": "Appends selectors to one another without spaces in between."
+   },
+   "selector-extend": {
+      "parameters": "$selector, $extendee, $extender",
+      "description": "Extends $extendee with $extender within $selector."
+   },
+   "selector-replace": {
+      "parameters": "$selector, $original, $replacement",
+      "description": "Replaces $original with $replacement within $selector."
+   },
+   "selector-unify": {
+      "parameters": "$selector1, $selector2",
+      "description": "Unifies two selectors to produce a selector that matches elements matched by both."
+   },
+   "is-superselector": {
+      "parameters": "$super, $sub",
+      "description": "Returns whether $super matches all the elements $sub does, and possibly more."
+   },
+   "simple-selectors": {
+      "parameters": "$selector",
+      "description": "Returns the simple selectors that comprise a compound selector."
+   },
+   "selector-parse": {
+      "parameters": "$selector",
+      "description": "Parses a selector into the format returned by &."
+   },
+   "feature-exists": {
+      "parameters": "$feature",
+      "description": "Returns whether a feature exists in the current Sass runtime."
+   },
+   "variable-exists": {
+      "parameters": "$name",
+      "description": "Returns whether a variable with the given name exists in the current scope."
+   },
+   "global-variable-exists": {
+      "parameters": "$name",
+      "description": "Returns whether a variable with the given name exists in the global scope."
+   },
+   "function-exists": {
+      "parameters": "$name",
+      "description": "Returns whether a function with the given name exists."
+   },
+   "mixin-exists": {
+      "parameters": "$name",
+      "description": "Returns whether a mixin with the given name exists."
+   },
+   "inspect": {
+      "parameters": "$value",
+      "description": "Returns the string representation of a value as it would be represented in Sass."
+   },
+   "type-of": {
+      "parameters": "$value",
+      "description": "Returns the type of a value."
+   },
+   "unit": {
+      "parameters": "$number",
+      "description": "Returns the unit(s) associated with a number."
+   },
+   "unitless": {
+      "parameters": "$number",
+      "description": "Returns whether a number has units."
+   },
+   "comparable": {
+      "parameters": "$number1, $number2",
+      "description": "Returns whether two numbers can be added, subtracted, or compared."
+   },
+   "call": {
+      "parameters": "$name, $args…",
+      "description": "Dynamically calls a Sass function."
+   },
+   "if": {
+      "parameters": "$condition, $if-true, $if-false",
+      "description": "Returns one of two values, depending on whether or not $condition is true."
+   }
+}
