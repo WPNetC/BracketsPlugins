@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- The icon can be used freely in both personal and commercial projects with no attribution required, but always appreciated. 
+You may NOT sub-license, resell, rent, redistribute or otherwise transfer the icon without express written permission from iconmonstr.com -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   x="0px"
+   y="0px"
+   width="512px"
+   height="512px"
+   viewBox="0 0 512 512"
+   enable-background="new 0 0 512 512"
+   xml:space="preserve"
+   id="svg3042"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="iconmonstr-video-play-3-icon.svg"><metadata
+     id="metadata3049"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs3047" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="696"
+     inkscape:window-height="480"
+     id="namedview3045"
+     showgrid="false"
+     inkscape:zoom="0.4609375"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-x="534"
+     inkscape:window-y="556"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3042" /><path
+     id="video-play-3-icon"
+     d="m 256,64.59147 c 49.11247,0 95.25606,19.97909 129.93311,56.26172 34.53115,36.13045 53.5492,84.12568 53.5492,135.14564 0,51.01996 -19.01805,99.01519 -53.5503,135.14682 -34.67595,36.28028 -80.82064,56.26171 -129.93201,56.26171 -49.11137,0 -95.25495,-19.98143 -129.93201,-56.26171 -34.532248,-36.13163 -53.550301,-84.12686 -53.550301,-135.14682 0,-51.01996 19.018053,-99.01519 53.550301,-135.14448 C 160.74505,84.57173 206.88863,64.59147 256,64.59147 m 0,-46.822334 c -125.7528,0 -227.694915,106.657764 -227.694915,238.229694 0,131.56842 101.942115,238.23204 227.694915,238.23204 125.75391,0 227.69491,-106.66246 227.69491,-238.23204 C 483.69491,124.42807 381.75391,17.769136 256,17.769136 l 0,0 z M 201.33554,374.41485 V 143.43091 l 177.8662,115.49432 -177.8662,115.48962 z"
+     inkscape:connector-curvature="0"
+     style="fill:#a9ffa9;fill-opacity:1" /></svg>

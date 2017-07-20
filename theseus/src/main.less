@@ -1,0 +1,443 @@
+/*
+ * Copyright (c) 2012 Massachusetts Institute of Technology, Adobe Systems
+ * Incorporated, and other contributors. All rights reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ *
+ */
+
+/* Change the settings for user-select and its counterparts, defaulting to none. */
+/* (copied from brackets_mixins.less) */
+.user-select(@type: none) {
+    -webkit-user-select: @type;
+    -khtml-user-select: @type;
+    -moz-user-select: @type;
+    -ms-user-select: @type;
+    -o-user-select: @type;
+    user-select: @type;
+}
+
+@-webkit-keyframes waggle {
+    from { -webkit-transform: rotate(-5deg); }
+    to { -webkit-transform: rotate(5deg); }
+}
+
+.CodeMirror {
+    .CodeMirror-linenumbers {
+        width: 60px;
+    }
+
+    .theseus-active {
+        background: #dfd;
+    }
+
+    .theseus-live {
+        background: #fff;
+    }
+
+    .theseus-dead {
+        background: rgba(0, 0, 0, 0.0525);
+    }
+
+    .theseus-hover-marker {
+        background: #D9EFF7;
+    }
+
+    .theseus-call-site {
+        background: #b7d6f2;
+        border: 1px solid #35b8fe;
+        border-radius: 4px;
+    }
+
+    .theseus-call-site-no-calls {
+        border: 1px solid #35b8fe;
+        border-radius: 4px;
+    }
+
+    .theseus-async-function-site {
+        background: #f2d6b7;
+    }
+
+    .theseus-variable {
+        background: #e9f801;
+        border-radius: 4px;
+    }
+
+    .theseus-hover-select {
+        background: #b7d6f2;
+        cursor: pointer;
+    }
+
+    .theseus-popup {
+        position: absolute;
+        background: white;
+        border: 1px solid #aaa;
+        padding: 4px;
+        max-width: 400px;
+        max-height: 300px;
+        overflow: auto;
+        z-index: 100;
+
+        table {
+            margin: 0;
+        }
+    }
+
+    .theseus-call-count {
+        pointer-events: auto;
+        color: #0055AD;
+        line-height: 0; /* otherwise sans-serif font pushes line height > 15px */
+        background: #fff;
+        border-top: 1px solid #e0e0e0;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        border-left: none;
+        border-radius: 0 999px 999px 0;
+        border-left: 0;
+        padding: 1px 5px;
+        cursor: pointer;
+        white-space: nowrap;
+        font-family: sans-serif;
+        font-size: 12px;
+
+        &:hover {
+            background: #288EDF;
+            border-color: #288EDF;
+            color: #fff;
+        }
+
+        &:active {
+            color: #fff;
+        }
+
+        &.uninitialized {
+        }
+
+        &.none {
+            background: #fff;
+            border-color: #eee;
+            color: #888;
+
+            &:hover {
+                background: #eee;
+                color: #888;
+            }
+
+            &:active {
+                color: #333;
+            }
+
+            &.set {
+                background: #eee;
+                border: 1px solid #ddd;
+                color: #333;
+            }
+        }
+
+        &.exception {
+            background: #fff;
+            color: #dd0035;
+
+            &:hover {
+                background: #F74687;
+                border-color: #f03479;
+                color: #fff;
+            }
+
+            &.set {
+                border-color: #eacdd3;
+                background: #fae0e5;
+                color: #333;
+            }
+        }
+
+        &.set {
+            border-color: #b6d0e2;
+            background: #d6eaf7;
+            color: #333;
+
+            .glyph {
+                display: inline;
+            }
+        }
+
+        .glyph {
+            display: none;
+            position: relative;
+            top: 1px;            
+            margin-left: 5px;
+        }
+    }
+
+    .theseus-probe {
+        margin-left: 2em;
+        background: #ccf;
+        border-radius: 4px;
+    }
+}
+
+.theseus-probe {
+    opacity: 0;
+
+    -webkit-transition: opacity 3s ease-in-out;
+    -moz-transition: opacity 3s ease-in-out;
+    transition: opacity 3s ease-in-out;
+}
+.probes .theseus-probe {
+    opacity: 1;
+}
+
+.waggle {
+    .theseus-dead {
+        -webkit-animation: waggle 2s ease-in-out alternate infinite;
+        display: inline-block;
+    }
+}
+
+.theseus-toolbar-button {
+    color: #ccc;
+    padding-right: 8px;
+
+    &.active {
+        color: red;
+    }
+}
+
+#theseus-panel {
+    padding-left: 3px;
+
+    .resizable-content {
+        background: #DFE2E2;
+        overflow: auto;
+    }
+
+    .source-chrome .vars-table {
+        background-color: #E6E9E9;
+    }
+
+    .source-node .vars-table {
+        background-color: #F0F3F3;
+    }
+
+    table.vars-table {
+        // display: inline-table;
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid #DFE2E2;
+        border-spacing: 0;
+        border-collapse: collapse;
+        margin: 0px;
+        width: auto;
+        color: #333;
+        
+        tr:hover th,
+        tr:hover td {
+            background: #e0f0fa;
+        }
+
+        td, th {
+            border-width: 0px;
+            margin: 0;
+            padding: 4px 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th.fn {
+            border: 1px solid #CDD0D0;
+            border-width: 0 0 0 1px;
+            font-weight: normal;
+            cursor: pointer;
+
+            span.fn {
+                color: #1069d6;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            span.path {
+                color: #777;
+                font-size: 11px;
+            }
+        }
+
+        th.timestamp {
+            font-weight: normal;
+            font-size: 11px;
+        }
+
+        td.backtrace-link {
+            cursor: pointer;
+
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .objects-bad {
+            cursor: not-allowed;
+        }
+
+        .theseus-selectable {
+            .user-select(text);
+            cursor: text;
+        }
+    }
+
+    div.indented {
+        padding-left: 20px;
+    }
+}
+
+#theseus-epoch-panel {
+    height: 26px;
+    min-height: 26px;
+    max-height: 26px;
+    background: white;
+    padding: 4px 4px;
+    font-size: 13px;
+    line-height: 13px;
+
+    .heading {
+        margin: 0 6px;
+        color: #888;
+    }
+
+    .epoch {
+        cursor: pointer;
+        padding: 2px;
+        display: inline-block;
+        vertical-align: baseline;
+
+        .name {
+            margin-right: 3px;
+        }
+
+        .hits {
+            font-weight: 500;
+        }
+
+        &.exception {
+            display: none;
+
+            .name {
+                color: #dd0035;
+            }
+        }
+
+        &.logs {
+            display: none;
+
+            .name {
+                color: #2c7201;
+            }
+        }
+
+        &.selected {
+            border-radius: 4px;
+            box-shadow: 0 0 4px 1px #288EDF;
+            background: #c1e1f2;
+        }
+
+        &:hover { .name, .hits { color: #288EDF; } }
+        &:active { .name, .hits { color: #cc0186; } }
+    }
+}
+
+#theseus-fcg-panel {
+    height: 82px;
+    min-height: 82px;
+    max-height: 82px;
+    background: white;
+    padding: 0;
+    position: relative;
+
+    .container {
+        position: absolute;
+        width: 78px;
+        top: 80px;
+        left: 0;
+        -webkit-transform-origin: 0 0;
+        -webkit-transform: rotate(-90deg);
+        overflow: hidden;
+    }
+    .container > .item {
+        width: 67px;
+    }
+    .caption {
+        margin-top: 12px;
+        margin-left: 3px;
+        padding: 0;
+        line-height: 0;
+        font-family: sans-serif;
+        font-size: 12px;
+        white-space: pre;
+    }
+    .item {
+        min-height: 6px;
+        padding: 0 6px 0 0;
+        margin: 6px 0;
+        border-radius: 0 3px 3px 0;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.5);
+        border-width: 1px 1px 1px 0;
+        cursor: pointer;
+    }
+    .item.active {
+        border-color: black;
+        box-shadow: 0 0 6px 2px rgba(0, 0, 0, 1);
+    }
+    .tooltip {
+        display: none;
+        position: absolute;
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 4px;
+    }
+}
+
+.theseus-popup {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.theseus-invitation-dialog {
+    .dialog-image img {
+        margin-left: 1em;
+    }
+
+    .option {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 4px;
+    }
+
+    li {
+        margin-top: 1em;
+    }
+
+    input, label {
+        display: inline-block;
+        vertical-align: baseline;
+    }
+}

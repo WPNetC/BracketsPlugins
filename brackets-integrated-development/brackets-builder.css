@@ -1,0 +1,77 @@
+.builder-content {
+    overflow: scroll !important;
+    height: 150px;
+    padding: 5px 10px;
+}
+
+#Toolbar-Debug-And-Run {
+color:#65ff65;
+content: "";
+background: url("images/run.svg") 0 0 no-repeat;
+background-size:24px 24px;
+width: 24px;
+height: 24px;
+}
+.builder-table {
+    width:100%;
+}
+.builder-table header {
+    margin-bottom: 3px;
+}
+.builder-table th {
+    text-align: left;
+    font-weight: bold;
+}
+.builder-table td {
+    
+    padding: 4px;
+}
+.builder-table  tr {
+    margin: 2px;
+}
+.builder-table tbody tr {
+    cursor: pointer;
+    border-style: none none solid none;
+    border-color: #790000;
+    border-width: 2px;
+}
+.builder-table .resizable-content-success pre {
+    background-color: transparent;
+}
+.resizable-content-success {
+    overflow: auto;
+    max-height: 100%;
+    margin-bottom: 32px;
+}
+.resizable-content-error {
+    margin-bottom: 32px;
+    background-color: white;
+    overflow: auto;
+    max-height: 100%;
+}
+.build-success {
+    width:100%;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    margin: 2px;
+    padding: 3px 3px 3px 12px;
+}
+.builder-content-result {
+    font-size: 80%;
+    background-color: white;
+    padding: 5px;
+}
+.compiler-gutter { width: 1em; text-align: right; }
+.cm-error {
+    background-color: #4b0000;
+}
+.panel_error {
+    
+}
+.error-icon {
+    background: url("images/error.svg") center center no-repeat;
+    background-size:20px 20px;
+    width: 25px;
+    height: 25px;
+}

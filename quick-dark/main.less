@@ -1,0 +1,187 @@
+/**
+ * Theme Quick Dark Copyright (c) 2014 Increment Web Services
+ *
+ * Licensed under MIT
+ *
+ * Based on https://github.com/Brackets-Themes/EasyDark
+ * Rendition of https://github.com/chriskempson/tomorrow-theme
+ */
+
+
+/* Palette */
+@background: #161617;
+@foreground: #ddd;
+@comment:    #888;
+@gray:       #666;
+@white:      #fff;
+@blue:       #779ec5;
+@purple:     #b488bf;
+@red:        #cc6666;
+@orange:     #e0943e;
+@yellow:     #f0c86a;
+@green:      #b5c45f;
+@aqua:       #8abeb7;
+
+/* Selection colors */
+@selection-color-focused:   fade(@blue, 30%);
+@selection-color-unfocused: fade(@gray, 40%);
+
+/* Active line colors */
+@active-line-bg:           fade(@gray, 40%);
+@active-line-gutter-bg:    fade(@gray, 25%);
+@active-line-number-color: @white;
+
+
+/* Editor styling */
+.cm-keyword        { color: @green; }
+.cm-atom           { color: @orange; }
+.cm-number         { color: @green; }
+.cm-def            { color: @foreground; }
+.cm-variable       { color: @orange; }
+.cm-variable-2     { color: @blue; }
+.cm-variable-3     { color: @red; }
+.cm-operator       { color: @foreground; }
+.cm-comment        { color: @comment; }
+.cm-string         { color: @purple; }
+.cm-string-2       { color: @aqua; }
+.cm-meta           { color: @red; }
+.cm-qualifier      { color: @blue; }
+.cm-builtin        { color: @yellow; }
+.cm-bracket        { color: @foreground; }
+.cm-tag            { color: @blue; }
+.cm-tag.cm-bracket { color: darken(@blue, 15%); }
+.cm-attribute      { color: @red; }
+.cm-property       { color: @yellow; }
+
+.cm-quote          { color: @blue; }
+.cm-header         { color: @red; }
+.cm-link           { color: @yellow; }
+.cm-em             { color: @orange; font-style: italic; }
+.cm-strong         { color: @green; }
+.cm-strikethrough  { color: @aqua; }
+.cm-hr             { color: @purple; }
+
+.cm-error          { color: @red; }
+
+.cm-matchhighlight    { border-bottom-color: @foreground; }
+.quick-view-highlight { background-color: fade(@white, 20%); }
+
+.CodeMirror {
+    line-height: 1.32;
+}
+
+.CodeMirror-scroll {
+    background-color: @background;
+    color: @foreground;
+}
+
+.CodeMirror-gutters {
+    background-color: darken(@background, 1%);
+}
+
+.CodeMirror-selected {
+    background-color: @selection-color-unfocused;
+}
+
+.CodeMirror-focused .CodeMirror-selected {
+    background-color: @selection-color-focused;
+}
+
+.CodeMirror-searching {
+    background-color: fade(@white, 40%);
+    color: @background !important;
+}
+
+.CodeMirror-searching.searching-current-match {
+    background-color: @white;
+}
+
+.CodeMirror-nonmatchingbracket {
+    background-color: fadeout(@red, 20%);
+    color: @white !important;
+}
+
+.CodeMirror-focused .CodeMirror-nonmatchingbracket {
+    background-color: @red;
+}
+
+.CodeMirror-matchingbracket {
+    background-color: darken(@gray, 10%);
+    color: @white !important;
+}
+
+.CodeMirror-focused .CodeMirror-matchingbracket {
+    background-color: @gray;
+}
+
+.CodeMirror-matchingtag {
+    background-color: darken(@gray, 15%);
+}
+
+.CodeMirror-focused .CodeMirror-matchingtag {
+    background-color: darken(@gray, 10%);
+}
+
+.CodeMirror-linenumber {
+    color: @comment !important;
+}
+
+.CodeMirror-activeline .CodeMirror-linenumber {
+    color: @active-line-number-color !important;
+}
+
+.CodeMirror-activeline-background {
+    background-color: fadeout(@active-line-bg, 15%) !important;
+}
+
+.CodeMirror-focused .CodeMirror-activeline-background {
+    background-color: @active-line-bg !important;
+}
+
+.CodeMirror-activeline .CodeMirror-gutter-elt {
+    background-color: fadeout(@active-line-gutter-bg, 15%);
+}
+
+.CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+    background-color: @active-line-gutter-bg;
+}
+
+.CodeMirror-cursor {
+    border-left: 1px solid @white;
+}
+
+.CodeMirror-overwrite .CodeMirror-cursor {
+    border-bottom: 1px solid @white;
+    border-left: none;
+}
+
+.CodeMirror-foldmarker {
+    border-color: @gray;
+    background-color: #000;
+    color: darken(@white, 30%);
+}
+
+.CodeMirror-foldgutter-open::after {
+    color: darken(@gray, 10%);
+}
+
+.over-gutter .CodeMirror-foldgutter-open::after {
+    color: @gray;
+}
+
+.CodeMirror-activeline .CodeMirror-foldgutter-open::after,
+.CodeMirror-foldgutter-folded::after {
+    color: @foreground;
+}
+
+
+/* Non-editor styling */
+.not-editor {
+    background-color: @background;
+    transition: background-color 0.15s ease-out;
+}
+
+.image-view {
+    background-color: @background;
+    color: @foreground;
+}

@@ -1,0 +1,50 @@
+[
+    {
+        "name": "PHP",
+        "cmd": "php $FILE",
+        "file_reg": "in( file)? (.+) on line",
+        "line_reg": "on line ([0-9]+)",
+        "msg_reg": "(.*) in",
+        "seperator": "\\n"
+    },
+    {
+        "name": "JavaScript",
+        "cmd": "node $FILE",
+        "file_reg": "(.+):",
+        "line_reg": "js:([0-9]+)",
+        "msg_reg": "[0-9]+[ |\\n]*([\\w\\W]+)",
+        "seperator": "todo"
+    },
+    {
+        "name": "Ruby",
+        "cmd": "ruby $FILE",
+        "file_reg": "^(.*):[0-9]",
+        "line_reg": ":([0-9]+):",
+        "msg_reg": ":[0-9]+: (.*)",
+        "seperator": "\\n"
+    },
+    {
+        "name": "Python",
+        "cmd": "python $FILE",
+        "file_reg": "(.*)\",",
+        "line_reg": ", line ([0-9]+)",
+        "msg_reg": ", line [0-9]+[ |\\n]*([\\w\\W]+)",
+        "seperator": "[ ]*File \""
+    },
+    {
+        "name": "Perl",
+        "cmd": "perl $FILE",
+        "file_reg": "at( file)? (.+) line",
+        "line_reg": "line ([0-9]+)",
+        "msg_reg": "(.*) at",
+        "seperator": "\\n"
+    },
+    {
+        "name": "D",
+        "cmd": "rdmd $FILE",
+        "file_reg": "^(Fail from compiler: )?([^\\(]*)",
+        "line_reg": "^.*\\(([0-9]+)\\)",
+        "msg_reg": "^.*Error: (.*)",
+        "seperator": "\\n"
+    }
+]

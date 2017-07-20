@@ -15,6 +15,7 @@ define(function (require) {
 		s = s.trim();
 		if (s[s.length - 1] == '%') {
 			return parseInt(s) * 2.55;
+
 		} else {
 			return parseInt(s);
 		}
@@ -95,120 +96,134 @@ define(function (require) {
 				scolor = "",
 				nr, ng, nb, na,
 				tr, tg, tb, tbracket;
-			if (!nd.classList.contains('cm-error')) {
-				var t = nd.innerText.trim();
+			if (nd.classList.contains('cm-error')) {
+				return;
+			}
+			var t = nd.innerText.trim();
 
-				// Check for scss variable.
-				if (nd.className === 'cm-variable-2' && mode === 'text/x-scss' && t[0] === '$') {
-					color = colors.definedColors[t];
-					if (color) {
-						processElement(nd, color, 'rgba(' + color.r + ', ' + color.g + ', ' + color.b + ', ' + color.a + ')');
-					}
-				}
-				// Check for plain hex color.
-				else if (t[0] == '#' && (t.length == 3 + 1 || t.length == 6 + 1)) {
-					color = Color.fromHexString(t);
-					if (color) {
-						// Add colour to list of defined colours.
-						var vName = nd.previousElementSibling.innerText;
-						colors.definedColors[vName] = color;
-						// Process element.
-						processElement(nd, color, t);
-
-					}
-				}
-				// Check other color modes.
-				else {
-					t = t.toLowerCase();
-					if (mode == 'sass') {
-						if ((t == 'rgb' &&
-								(tbracket = nd.nextElementSibling, tbracket && tbracket.innerText == '(') &&
-								isCMNumber(nr = tbracket.nextElementSibling) &&
-								nextNodeValue(nr) == ',' &&
-								isCMNumber(ng = nr.nextElementSibling) &&
-								nextNodeValue(ng) == ',' &&
-								isCMNumber(nb = ng.nextElementSibling) &&
-								(tbracket = nb.nextElementSibling, tbracket && tbracket.innerText[0] == ')')) ||
-							(t == 'rgba' &&
-								(tbracket = nd.nextElementSibling, tbracket && tbracket.innerText == '(') &&
-								isCMNumber(nr = tbracket.nextElementSibling) &&
-								nextNodeValue(nr) == ',' &&
-								isCMNumber(ng = nr.nextElementSibling) &&
-								nextNodeValue(ng) == ',' &&
-								isCMNumber(nb = ng.nextElementSibling) &&
-								nextNodeValue(nb) == ',' &&
-								isCMNumber(na = nb.nextElementSibling) &&
-								(tbracket = na.nextElementSibling, tbracket && tbracket.innerText[0] == ')'))
-						) {
-							color = new Color(parseCSSNumber(nr.innerText), parseCSSNumber(ng.innerText), parseCSSNumber(nb.innerText));
-							scolor = sassRgbaText(nd, tbracket);
-						} else if ((t == 'hsl' &&
-								(tbracket = nd.nextElementSibling, tbracket && tbracket.innerText == '(') &&
-								isCMNumber(nr = tbracket.nextElementSibling) &&
-								nextNodeValue(nr) == ',' &&
-								isCMNumber(ng = nr.nextElementSibling) &&
-								(tbracket = ng.nextElementSibling, tbracket && tbracket.innerText == '%') &&
-								nextNodeValue(tbracket) == ',' &&
-								isCMNumber(nb = tbracket.nextElementSibling) &&
-								(tbracket = sassPercentOrBracket(nb.nextElementSibling))) ||
-							(t == 'hsla' &&
-								(tbracket = nd.nextElementSibling, tbracket && tbracket.innerText == '(') &&
-								isCMNumber(nr = tbracket.nextElementSibling) &&
-								nextNodeValue(nr) == ',' &&
-								isCMNumber(ng = nr.nextElementSibling) &&
-								(tbracket = ng.nextElementSibling, tbracket && tbracket.innerText == '%') &&
-								nextNodeValue(tbracket) == ',' &&
-								isCMNumber(nb = tbracket.nextElementSibling) &&
-								(tbracket = nb.nextElementSibling, tbracket && tbracket.innerText == '%') &&
-								nextNodeValue(tbracket) == ',' &&
-								isCMNumber(na = tbracket.nextElementSibling) &&
-								(tbracket = na.nextElementSibling, tbracket && tbracket.innerText[0] == ')'))
-						) {
-							color = Color.fromHSL(parseInt(nr.innerText), parseInt(ng.innerText), parseInt(nb.innerText));
-							scolor = sassRgbaText(nd, tbracket);
+			// Check for scss variable.
+			if (nd.className === 'cm-variable-2' && mode === 'text/x-scss' && t[0] === '$') {
+				color = colors.definedColors[t];
+				if (color) {
+					// Add colour to list of defined colours.
+					var vObj = nd.previousElementSibling;
+					if (vObj) {
+						var vName = vObj.innerText;
+						if (vName[0] === '$') {
+							colors.definedColors[vName] = color;
 						}
-					} else {
-						if ((t == 'rgb' || t == 'hsl') &&
-							nextNodeValue(nd) == '(' &&
-							isCMNumber(nr = nd.nextElementSibling) &&
+
+					}
+					processElement(nd, color, 'rgba(' + color.r + ', ' + color.g + ', ' + color.b + ', ' + color.a + ')');
+				}
+			}
+			// Check for plain hex color.
+			else if (t[0] == '#' && (t.length == 3 + 1 || t.length == 6 + 1)) {
+				color = Color.fromHexString(t);
+				if (color) {
+					// Add colour to list of defined colours.
+					var vName = nd.previousElementSibling.innerText;
+					colors.definedColors[vName] = color;
+					// Process element.
+					processElement(nd, color, t);
+				}
+			}
+			// Check other color modes.
+			else {
+				t = t.toLowerCase();
+				if (mode == 'sass') {
+					if ((t == 'rgb' &&
+							(tbracket = nd.nextElementSibling, tbracket && tbracket.innerText == '(') &&
+							isCMNumber(nr = tbracket.nextElementSibling) &&
 							nextNodeValue(nr) == ',' &&
 							isCMNumber(ng = nr.nextElementSibling) &&
 							nextNodeValue(ng) == ',' &&
 							isCMNumber(nb = ng.nextElementSibling) &&
-							nextNodeValue(nb)[0] == ')'
-						) {
-							if (t == 'rgb') {
-								color = new Color(parseCSSNumber(tr = nr.innerText), parseCSSNumber(tg = ng.innerText), parseCSSNumber(tb = nb.innerText));
-							} else {
-								color = Color.fromHSL(parseInt(tr = nr.innerText), parseInt(tg = ng.innerText), parseInt(tb = nb.innerText));
-							}
-							scolor = nd.innerText + nd.nextSibling.nodeValue + tr + nr.nextSibling.nodeValue + tg + ng.nextSibling.nodeValue + tb + nb.nextSibling.nodeValue.split(')')[0] + ')';
-						} else if ((t == 'rgba' || t == 'hsla') &&
-							nextNodeValue(nd) == '(' &&
-							isCMNumber(nr = nd.nextElementSibling) &&
+							(tbracket = nb.nextElementSibling, tbracket && tbracket.innerText[0] == ')')) ||
+						(t == 'rgba' &&
+							(tbracket = nd.nextElementSibling, tbracket && tbracket.innerText == '(') &&
+							isCMNumber(nr = tbracket.nextElementSibling) &&
 							nextNodeValue(nr) == ',' &&
 							isCMNumber(ng = nr.nextElementSibling) &&
 							nextNodeValue(ng) == ',' &&
 							isCMNumber(nb = ng.nextElementSibling) &&
 							nextNodeValue(nb) == ',' &&
 							isCMNumber(na = nb.nextElementSibling) &&
-							nextNodeValue(na)[0] == ')'
-						) {
-							if (t == 'rgba') {
-								color = new Color(parseCSSNumber(tr = nr.innerText), parseCSSNumber(tg = ng.innerText), parseCSSNumber(tb = nb.innerText));
-							} else {
-								color = Color.fromHSL(parseInt(tr = nr.innerText), parseInt(tg = ng.innerText), parseInt(tb = nb.innerText));
-							}
-							scolor = nd.innerText + nd.nextSibling.nodeValue + tr + nr.nextSibling.nodeValue + tg + ng.nextSibling.nodeValue + tb + nb.nextSibling.nodeValue + na.innerText + na.nextSibling.nodeValue.split(')')[0] + ')';
-						}
+							(tbracket = na.nextElementSibling, tbracket && tbracket.innerText[0] == ')'))
+					) {
+						color = new Color(parseCSSNumber(nr.innerText), parseCSSNumber(ng.innerText), parseCSSNumber(nb.innerText));
+						scolor = sassRgbaText(nd, tbracket);
+					} else if ((t == 'hsl' &&
+							(tbracket = nd.nextElementSibling, tbracket && tbracket.innerText == '(') &&
+							isCMNumber(nr = tbracket.nextElementSibling) &&
+							nextNodeValue(nr) == ',' &&
+							isCMNumber(ng = nr.nextElementSibling) &&
+							(tbracket = ng.nextElementSibling, tbracket && tbracket.innerText == '%') &&
+							nextNodeValue(tbracket) == ',' &&
+							isCMNumber(nb = tbracket.nextElementSibling) &&
+							(tbracket = sassPercentOrBracket(nb.nextElementSibling))) ||
+						(t == 'hsla' &&
+							(tbracket = nd.nextElementSibling, tbracket && tbracket.innerText == '(') &&
+							isCMNumber(nr = tbracket.nextElementSibling) &&
+							nextNodeValue(nr) == ',' &&
+							isCMNumber(ng = nr.nextElementSibling) &&
+							(tbracket = ng.nextElementSibling, tbracket && tbracket.innerText == '%') &&
+							nextNodeValue(tbracket) == ',' &&
+							isCMNumber(nb = tbracket.nextElementSibling) &&
+							(tbracket = nb.nextElementSibling, tbracket && tbracket.innerText == '%') &&
+							nextNodeValue(tbracket) == ',' &&
+							isCMNumber(na = tbracket.nextElementSibling) &&
+							(tbracket = na.nextElementSibling, tbracket && tbracket.innerText[0] == ')'))
+					) {
+						color = Color.fromHSL(parseInt(nr.innerText), parseInt(ng.innerText), parseInt(nb.innerText));
+						scolor = sassRgbaText(nd, tbracket);
 					}
-					if (color) {
-						nd.dataset.color = scolor;
-						nd.classList.add('h-phantom');
-						processElement(nd, color, color.toHexString());
+				} else {
+					if ((t == 'rgb' || t == 'hsl') &&
+						nextNodeValue(nd) == '(' &&
+						isCMNumber(nr = nd.nextElementSibling) &&
+						nextNodeValue(nr) == ',' &&
+						isCMNumber(ng = nr.nextElementSibling) &&
+						nextNodeValue(ng) == ',' &&
+						isCMNumber(nb = ng.nextElementSibling) &&
+						nextNodeValue(nb)[0] == ')'
+					) {
+						if (t == 'rgb') {
+							color = new Color(parseCSSNumber(tr = nr.innerText), parseCSSNumber(tg = ng.innerText), parseCSSNumber(tb = nb.innerText));
+						} else {
+							color = Color.fromHSL(parseInt(tr = nr.innerText), parseInt(tg = ng.innerText), parseInt(tb = nb.innerText));
+						}
+						scolor = nd.innerText + nd.nextSibling.nodeValue + tr + nr.nextSibling.nodeValue + tg + ng.nextSibling.nodeValue + tb + nb.nextSibling.nodeValue.split(')')[0] + ')';
+					} else if ((t == 'rgba' || t == 'hsla') &&
+						nextNodeValue(nd) == '(' &&
+						isCMNumber(nr = nd.nextElementSibling) &&
+						nextNodeValue(nr) == ',' &&
+						isCMNumber(ng = nr.nextElementSibling) &&
+						nextNodeValue(ng) == ',' &&
+						isCMNumber(nb = ng.nextElementSibling) &&
+						nextNodeValue(nb) == ',' &&
+						isCMNumber(na = nb.nextElementSibling) &&
+						nextNodeValue(na)[0] == ')'
+					) {
+						if (t == 'rgba') {
+							color = new Color(parseCSSNumber(tr = nr.innerText), parseCSSNumber(tg = ng.innerText), parseCSSNumber(tb = nb.innerText));
+						} else {
+							color = Color.fromHSL(parseInt(tr = nr.innerText), parseInt(tg = ng.innerText), parseInt(tb = nb.innerText));
+						}
+						scolor = nd.innerText + nd.nextSibling.nodeValue + tr + nr.nextSibling.nodeValue + tg + ng.nextSibling.nodeValue + tb + nb.nextSibling.nodeValue + na.innerText + na.nextSibling.nodeValue.split(')')[0] + ')';
 					}
 				}
+				if (color) {
+					// Add colour to list of defined colours.
+					var vName = nd.previousElementSibling.innerText;
+					colors.definedColors[vName] = color;
+
+					nd.dataset.color = scolor;
+					nd.classList.add('h-phantom');
+					processElement(nd, color, color.toHexString());
+				}
 			}
+
 		}
 		nodes = [];
 		if (mode === 'text/x-scss') {
@@ -243,19 +258,10 @@ define(function (require) {
 		// If not yet processed other sass files, defer main process until we have found any color variables.
 		var colorsLength = Object.keys(colors.definedColors).length;
 		if (onlyParseIfNew && colorsLength <= 141) {
-			var scssText = getText().done(function (files) {
-				for (var fIdx in files) {
-					var colorStrings = files[fIdx].content;
-					for (var cIdx in colorStrings) {
-						var cString = colorStrings[cIdx];
-						var parts = cString.split(':');
-						var cName = parts[0].trim();
-						var cVal = parts[1].trim();
-						var defColor = Color.fromHexString(cVal);
-						if (defColor) {
-							colors.definedColors[cName] = defColor;
-						}
-					}
+			var scssText = getText().done(function (colorObjs) {
+				for (var cIdx in colorObjs) {
+					var cObj = colorObjs[cIdx];
+					colors.definedColors[cObj.name] = cObj.color;
 				}
 				realProcess(cm, _, node);
 			});
@@ -307,21 +313,55 @@ define(function (require) {
 				DocumentManager.getDocumentText(file)
 					.done(function (content) {
 
+						// Parse hash value results.
 						var results = content.match(hashRegEx);
-						texts.push({
-							content: results,
-							file: file
-						});
+						for (var hashIdx in results) {
+							var hashString = results[hashIdx];
+							var parts = hashString.split(':');
+							var cName = parts[0].trim();
+							var cVal = parts[1].trim();
+							var defColor = Color.fromHexString(cVal);
+							texts.push({
+								name: cName,
+								color: defColor
+							});
+						}
+
+						// Parse rgba value results.
 						results = content.match(rgbaRegEx);
-						texts.push({
-							content: results,
-							file: file
-						});
+						for (var rgbaIdx in results) {
+							var rgbaString = results[rgbaIdx];
+							var parts = rgbaString.split(':');
+							var cName = parts[0].trim();
+							var cVal = parts[1].trim().split(',');
+							var defColor = new Color(
+								parseCSSNumber(cVal[0].split('(')[1].split(',')[0].trim()), //rgba(173,
+								parseCSSNumber(cVal[1].split(',')[0].trim()), // 255,
+								parseCSSNumber(cVal[2].split(',')[0].trim()) // 250,
+							);
+							texts.push({
+								name: cName,
+								color: defColor
+							});
+						}
+
+						// Parse rgb value results.
 						results = content.match(rgbRegEx);
-						texts.push({
-							content: results,
-							file: file
-						});
+						for (var rgbIdx in results) {
+							var rgbString = results[rgbIdx];
+							var parts = rgbString.split(':');
+							var cName = parts[0].trim();
+							var cVal = parts[1].trim().split(',');
+							var defColor = new Color(
+								parseCSSNumber(cVal[0].split('(')[1].split(',')[0].trim()), //rgba(173,
+								parseCSSNumber(cVal[1].split(',')[0].trim()), // 255,
+								parseCSSNumber(cVal[2].split(',')[0].trim()) // 250,
+							);
+							texts.push({
+								name: cName,
+								color: defColor
+							});
+						}
 
 					}).always(function () {
 
